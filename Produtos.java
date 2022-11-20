@@ -49,12 +49,18 @@ public class Produtos {
         catalogo.entrySet().forEach(a -> System.out.printf( "%s -> R$ %.2f %n", a.getKey(), a.getValue() ) );
         System.out.println("\n=================================== \n");
     }
-    public static Map<String, Double> getCatalogo() {
-        Map<String, Double> catalogo = Map.of("PAO-DE-QUEIJO", 2.5D, "BOLO", 5.00D,
-                "SALGADO", 5.50D, "PUDIM", 8.5D, "BISCOITO", 1.0D, "SUCO",
-                8.50D, "REFRIGERANTE", 3.50D, "CAFE", 4.25D, "AGUA",
-                2.5D, "VITAMINA", 12.00D);
-        return catalogo;
-    }
-
+    protected static final Map<String, Double> getCatalogo() {
+        Map<String, Double> CATALOGO = Map.of(
+                ProdutosPadaria.PAO_DE_QUEIJO.getitem(), ProdutosPadaria.PAO_DE_QUEIJO.getPreco(),
+                ProdutosPadaria.BOLO.getitem(), ProdutosPadaria.BOLO.getPreco(),
+                ProdutosPadaria.SALGADO.getitem(), ProdutosPadaria.SALGADO.getPreco(),
+                ProdutosPadaria.PUDIM.getitem(), ProdutosPadaria.PUDIM.getPreco(),
+                ProdutosPadaria.BISCOITO.getitem(), ProdutosPadaria.BISCOITO.getPreco(),
+                ProdutosPadaria.SUCO.getitem(), ProdutosPadaria.SUCO.getPreco(),
+                ProdutosPadaria.REFRIGERANTE.getitem(), ProdutosPadaria.REFRIGERANTE.getPreco(),
+                ProdutosPadaria.CAFE.getitem(), ProdutosPadaria.CAFE.getPreco(),
+                ProdutosPadaria.AGUA.getitem(), ProdutosPadaria.AGUA.getPreco(),
+                ProdutosPadaria.VITAMINA.getitem(), ProdutosPadaria.VITAMINA.getPreco());
+        return CATALOGO;
+            }
 }
