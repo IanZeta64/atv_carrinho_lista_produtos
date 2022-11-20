@@ -3,9 +3,8 @@ import java.util.*;
 public class Atv5_ex1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Produtos produtos = new Produtos();
+        //Produtos produtos = new Produtos();
 
-        Map<String, Double> catalogo = produtos.getCatalogo();
         HashMap<String, Double> carrinho = new HashMap<>();
 
         String item, resposta, consumirLinha;
@@ -13,20 +12,20 @@ public class Atv5_ex1 {
         boolean flagResposta = true, flagQuantidade = true;
         Double soma = 0.0D;
 
-        produtos.imprimirCatalogo(catalogo);
+        Produtos.imprimirCatalogo(Produtos.getCatalogo());
 
         do {
-            item = produtos.escolherProduto(sc, catalogo);
+            item = Produtos.escolherProduto(sc, Produtos.getCatalogo());
             if (carrinho.containsKey(item)) {
                 System.out.println("Item ja adicionado ao carrinho. " +
                         "Digite a quantidade a TOTAL ser atualizada:");
             }
             do{
                 try {
-                    quantidade = produtos.verificarQuantidade(sc);
+                    quantidade = Produtos.verificarQuantidade(sc);
 
                     if (carrinho.containsKey(item)) {
-                        carrinho.putIfAbsent(item, (catalogo.get(item) * quantidade));
+                        carrinho.putIfAbsent(item, (Produtos.getCatalogo().get(item) * quantidade));
                         System.out.println("quantidade adicionada no item do carrinho!");
                     }
                 }catch (InputMismatchException e) {
@@ -37,9 +36,9 @@ public class Atv5_ex1 {
                 flagQuantidade = (quantidade <= 0) ? true : false ;
             }while(flagQuantidade);
 
-            carrinho.put(item, quantidade * catalogo.get(item));
+            carrinho.put(item, quantidade * Produtos.getCatalogo().get(item));
             consumirLinha = sc.nextLine();
-            flagResposta = produtos.retornarResposta(sc);
+            flagResposta = Produtos.retornarResposta(sc);
         } while (flagResposta);
 
         System.out.println("ITENS NO CARRINHO:");
@@ -51,5 +50,6 @@ public class Atv5_ex1 {
         }
         System.out.printf("R$ %.2f.", soma);
         sc.close();
+
     }
 }
