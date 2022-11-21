@@ -3,53 +3,59 @@ import java.util.*;
 public class Atv5_ex1 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        //Produtos produtos = new Produtos();
+        Carrinho cr = new Carrinho();
 
-        HashMap<String, Double> carrinho = new HashMap<>();
+        HashMap<String, Double> pedido = new HashMap<>();
 
-        String item, resposta, consumirLinha;
+        String item, consumirLinha;
         Integer quantidade = 0;
         boolean flagResposta = true, flagQuantidade = true;
         Double soma = 0.0D;
 
-        Produtos.imprimirCatalogo(Produtos.getCatalogo());
+        cr.imprimirCatalogo(cr.getCatalogo());
 
         do {
-            item = Produtos.escolherProduto(sc, Produtos.getCatalogo());
-            if (carrinho.containsKey(item)) {
+            item = cr.escolherProduto(sc, cr.getCatalogo());
+            if (pedido.containsKey(item)) {
                 System.out.println("Item ja adicionado ao carrinho. " +
                         "Digite a quantidade a TOTAL ser atualizada:");
             }
-            do{
+            do {
                 try {
-                    quantidade = Produtos.verificarQuantidade(sc);
+                    quantidade = cr.verificarQuantidade(sc);
 
-                    if (carrinho.containsKey(item)) {
-                        carrinho.putIfAbsent(item, (Produtos.getCatalogo().get(item) * quantidade));
+                    if (pedido.containsKey(item)) {
+                        pedido.putIfAbsent(item, (cr.getCatalogo().get(item) * quantidade));
                         System.out.println("quantidade adicionada no item do carrinho!");
                     }
-                }catch (InputMismatchException e) {
+                } catch (InputMismatchException e) {
                     System.out.println("Erro na entrada de dados!");
                     consumirLinha = sc.nextLine();
                     quantidade = 0;
                 }
-                flagQuantidade = (quantidade <= 0) ? true : false ;
-            }while(flagQuantidade);
+                flagQuantidade = (quantidade <= 0) ? true : false;
+            } while (flagQuantidade);
 
-            carrinho.put(item, quantidade * Produtos.getCatalogo().get(item));
+            pedido.put(item, quantidade * cr.getCatalogo().get(item));
             consumirLinha = sc.nextLine();
-            flagResposta = Produtos.retornarResposta(sc);
+            flagResposta = cr.retornarResposta(sc);
         } while (flagResposta);
 
         System.out.println("ITENS NO CARRINHO:");
-        carrinho.entrySet().forEach(a -> System.out.println(a.getKey() + " = R$" + a.getValue()));
+        pedido.entrySet().forEach(a -> System.out.println(a.getKey() + " = R$" + a.getValue()));
         System.out.println("\nVALOR FINAL:");
 
-        for (Double valores: carrinho.values()) {
-            soma += valores;
-        }
+        soma = somarCarrinho(pedido);
         System.out.printf("R$ %.2f.", soma);
         sc.close();
 
+    }
+
+    public static Double somarCarrinho(HashMap<String, Double> carrinho) {
+        Double soma = 0.0D;
+        for (Double valores : carrinho.values()) {
+            soma += valores;
+        }
+        return soma;
     }
 }

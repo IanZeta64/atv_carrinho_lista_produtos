@@ -1,6 +1,7 @@
 import java.util.Map;
 import java.util.Scanner;
-public class Produtos {
+public class Carrinho {
+
     public static boolean retornarResposta(Scanner sc) {
         boolean flagResposta = true, flagInterno = true;
         String resposta;
