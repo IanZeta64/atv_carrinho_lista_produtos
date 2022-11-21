@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 public class Carrinho {
@@ -18,7 +19,7 @@ public class Carrinho {
         }while(flagInterno);
         return flagResposta;
     }
-    public static Integer verificarQuantidade(Scanner sc) {
+    public static Integer verificarQuantidade(Scanner sc,  HashMap<String, Double> pedido, String item) {
         Integer quantidade;
         boolean flag;
         do {
@@ -27,6 +28,10 @@ public class Carrinho {
             flag = (quantidade > 0) ? true : false;
             if(!flag){
                 System.out.println("Digite um valor valido.");
+            }
+            if (pedido.containsKey(item)) {
+                pedido.putIfAbsent(item, (getCatalogo().get(item) * quantidade));
+                System.out.println("quantidade adicionada no item do carrinho!");
             }
         }while (!flag);
         return quantidade;

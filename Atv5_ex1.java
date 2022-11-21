@@ -22,12 +22,7 @@ public class Atv5_ex1 {
             }
             do {
                 try {
-                    quantidade = cr.verificarQuantidade(sc);
-
-                    if (pedido.containsKey(item)) {
-                        pedido.putIfAbsent(item, (cr.getCatalogo().get(item) * quantidade));
-                        System.out.println("quantidade adicionada no item do carrinho!");
-                    }
+                    quantidade = cr.verificarQuantidade(sc,pedido, item);
                 } catch (InputMismatchException e) {
                     System.out.println("Erro na entrada de dados!");
                     consumirLinha = sc.nextLine();
@@ -48,9 +43,7 @@ public class Atv5_ex1 {
         soma = somarCarrinho(pedido);
         System.out.printf("R$ %.2f.", soma);
         sc.close();
-
     }
-
     public static Double somarCarrinho(HashMap<String, Double> carrinho) {
         Double soma = 0.0D;
         for (Double valores : carrinho.values()) {
