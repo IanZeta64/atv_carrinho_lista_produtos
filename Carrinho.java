@@ -50,7 +50,7 @@ public class Carrinho {
         catalogo.entrySet().forEach(a -> System.out.printf( "%s -> R$ %.2f %n", a.getKey(), a.getValue() ) );
         System.out.println("\n=================================== \n");
     }
-    protected static final Map<String, Double> getCatalogo() {
+    private static final Map<String, Double> catalogo() {
         Map<String, Double> CATALOGO = Map.of(
                 ProdutosPadaria.PAO_DE_QUEIJO.getitem(), ProdutosPadaria.PAO_DE_QUEIJO.getPreco(),
                 ProdutosPadaria.BOLO.getitem(), ProdutosPadaria.BOLO.getPreco(),
@@ -63,5 +63,8 @@ public class Carrinho {
                 ProdutosPadaria.AGUA.getitem(), ProdutosPadaria.AGUA.getPreco(),
                 ProdutosPadaria.VITAMINA.getitem(), ProdutosPadaria.VITAMINA.getPreco());
         return CATALOGO;
+            }
+            public static final Map<String, Double> getCatalogo(){
+                return catalogo();
             }
 }
