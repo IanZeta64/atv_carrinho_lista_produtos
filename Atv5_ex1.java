@@ -15,11 +15,7 @@ public class Atv5_ex1 {
         cr.imprimirCatalogo(cr.getCatalogo());
 
         do {
-            item = cr.escolherProduto(sc, cr.getCatalogo());
-            if (pedido.containsKey(item)) {
-                System.out.println("Item ja adicionado ao carrinho. " +
-                        "Digite a quantidade a TOTAL ser atualizada:");
-            }
+            item = cr.escolherProduto(sc, cr.getCatalogo(), pedido);
             do {
                 try {
                     quantidade = cr.verificarQuantidade(sc, pedido, item);
@@ -33,6 +29,7 @@ public class Atv5_ex1 {
 
             pedido.put(item, quantidade * cr.getCatalogo().get(item));
             consumirLinha = sc.nextLine();
+
             flagResposta = cr.retornarResposta(sc);
         } while (flagResposta);
 

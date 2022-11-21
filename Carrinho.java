@@ -43,7 +43,7 @@ public class Carrinho {
         }while (!flag);
         return quantidade;
     }
-    public static String escolherProduto(Scanner sc, Map<String, Double> catalogo) {
+    public static String escolherProduto(Scanner sc, Map<String, Double> catalogo,Map<String, Double> pedido) {
         boolean flag;
         String item;
         do {
@@ -52,6 +52,10 @@ public class Carrinho {
             flag = (catalogo.containsKey(item)) ? true : false;
             if(!flag){
                 System.out.println("Digite um item valido do menu.");
+            }
+            if (pedido.containsKey(item)) {
+                System.out.println("Item ja adicionado ao carrinho. " +
+                        "Digite a quantidade a TOTAL ser atualizada:");
             }
         }while (!flag);
         return item;
