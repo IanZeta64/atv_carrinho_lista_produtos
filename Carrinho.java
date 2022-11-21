@@ -3,6 +3,13 @@ import java.util.Map;
 import java.util.Scanner;
 public class Carrinho {
 
+    public static Double somarCarrinho(HashMap<String, Double> carrinho) {
+        Double soma = 0.0D;
+        for (Double valores : carrinho.values()) {
+            soma += valores;
+        }
+        return soma;
+    }
     public static boolean retornarResposta(Scanner sc) {
         boolean flagResposta = true, flagInterno = true;
         String resposta;
