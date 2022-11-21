@@ -16,7 +16,8 @@ public enum ProdutosPadaria {
     public Double getPreco() {
         return preco;
     }
-    public String getitem() {return item;
+    public String getitem() {
+        return item;
     }
 
 }
