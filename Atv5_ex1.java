@@ -32,13 +32,17 @@ public class Atv5_ex1 {
 
             flagResposta = cr.retornarResposta(sc);
         } while (flagResposta);
+        soma = cr.somarCarrinho(pedido);
 
+        System.out.println("===================================");
         System.out.println("ITENS NO CARRINHO:");
         pedido.entrySet().forEach(a -> System.out.println(a.getKey() + " = R$" + a.getValue()));
-        System.out.println("\nVALOR FINAL:");
+        System.out.println("===================================");
+        System.out.println("VALOR FINAL:");
+        System.out.printf("R$ %.2f.%n", soma);
+        System.out.println("===================================");
 
-        soma = cr.somarCarrinho(pedido);
-        System.out.printf("R$ %.2f.", soma);
+
         sc.close();
     }
 
