@@ -7,10 +7,10 @@ public class Atv5_ex1 {
 
         HashMap<String, Double> pedido = new HashMap<>();
 
-        String item, consumirLinha;
-        Integer quantidade = 0;
-        boolean flagResposta = true, flagQuantidade = true;
-        Double soma = 0.0D;
+        String item;
+        Integer quantidade;
+        boolean flagResposta, flagQuantidade;
+        Double soma;
 
         cr.imprimirCatalogo(cr.getCatalogo());
 
@@ -21,14 +21,14 @@ public class Atv5_ex1 {
                     quantidade = cr.verificarQuantidade(sc, pedido, item);
                 } catch (InputMismatchException e) {
                     System.out.println("Erro na entrada de dados!");
-                    consumirLinha = sc.nextLine();
+                    sc.nextLine();
                     quantidade = 0;
                 }
                 flagQuantidade = (quantidade <= 0) ? true : false;
             } while (flagQuantidade);
 
             pedido.put(item, quantidade * cr.getCatalogo().get(item));
-            consumirLinha = sc.nextLine();
+            sc.nextLine();
 
             flagResposta = cr.retornarResposta(sc);
         } while (flagResposta);
@@ -41,9 +41,6 @@ public class Atv5_ex1 {
         System.out.println("VALOR FINAL:");
         System.out.printf("R$ %.2f.%n", soma);
         System.out.println("===================================");
-
-
         sc.close();
     }
-
 }

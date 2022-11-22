@@ -2,7 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 public class Carrinho {
-
     public static Double somarCarrinho(HashMap<String, Double> carrinho) {
         Double soma = 0.0D;
         for (Double valores : carrinho.values()) {
@@ -66,7 +65,7 @@ public class Carrinho {
         catalogo.entrySet().forEach(a -> System.out.printf( "%s -> R$ %.2f %n", a.getKey(), a.getValue() ) );
         System.out.println("\n=================================== \n");
     }
-    private static final Map<String, Double> catalogo() {
+    private static Map<String, Double> catalogo() {
         Map<String, Double> CATALOGO = Map.of(
                 ProdutosPadaria.PAO_DE_QUEIJO.getitem(), ProdutosPadaria.PAO_DE_QUEIJO.getPreco(),
                 ProdutosPadaria.BOLO.getitem(), ProdutosPadaria.BOLO.getPreco(),
@@ -80,7 +79,7 @@ public class Carrinho {
                 ProdutosPadaria.VITAMINA.getitem(), ProdutosPadaria.VITAMINA.getPreco());
         return CATALOGO;
             }
-            public static final Map<String, Double> getCatalogo(){
+    public static final Map<String, Double> getCatalogo(){
                 return catalogo();
             }
 }
